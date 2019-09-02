@@ -1,5 +1,9 @@
 # google-appscript
 
+## 演示视频
+
+https://www.bilibili.com/video/av66399654
+
 ## Api文档
 
 https://developers.google.com/apps-script/api/concepts/
@@ -22,3 +26,5 @@ https://mixedanalytics.com/api-connector/  浏览器插件，通过外部api把�
 [导入网页数据到 Google Sheet](https://www.cnblogs.com/Wayou/p/7039698.html)
 
 [将coinmarketcap导入到 Google Sheet](https://mixedanalytics.com/knowledge-base/import-coinmarketcap-data-to-google-sheets/)
+
+[将 Google Sheet数据导入到stitchdata](https://www.stitchdata.com/blog/how-to-replicate-google-sheets-to-your-data-warehouse/)
