@@ -1,26 +1,44 @@
- function addElaRecord(e) {
+ function addElaPrice(e) { // 亦来云
   // https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getsheetbynamename
 
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("tab1");
 
   if (sheet != null) {
-    // sheet.getRange('A1').setValue(getCurrTime());
     // sheet.getRange('B1').setValue(elaLastPrice());
 
     sheet.getCurrentCell().setValue(getCurrTime());
-    sheet.getCurrentCell().offset(0, 1).setValue(elaLastPrice()); // 右一列
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("elausdt")); // 向右一个单元格
   }
+}
 
+function addHtPrice(e) { // HT
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("HT");
+
+  if (sheet != null) {
+    sheet.getCurrentCell().setValue(getCurrTime());
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("htusdt"));
+  }
+}
+
+function addNasPrice(e) { // 星云
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("NAS");
+
+  if (sheet != null) {
+    sheet.getCurrentCell().setValue(getCurrTime());
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("nasusdt"));
+  }
 }
 
 function getCurrTime() { // 当前时间
   var _now = new Date();
-  var now = _now.getFullYear() + "-" + (_now.getMonth() + 1) + "-" + _now.getDate() + " " + _now.getHours() + ":" + _now.getMinutes() + ":" + _now.getSeconds();
+  var now = _now.format();
 
+  Logger.log("now: " + now);
   return now;
 }
 
-function elaLastPrice() {  // 获取亦来云当前现货价格
+function getLastPrice(symbol) {  // 获取当前现货价格
   /*
   {
       "status":"ok",
@@ -39,7 +57,7 @@ function elaLastPrice() {  // 获取亦来云当前现货价格
       }
   }
   */
-  var url = "https://api.huobi.pro/market/detail?symbol=elausdt";
+  var url = "https://api.huobi.pro/market/detail?symbol=" + symbol;
 
   var options = {
     'method' : 'get',
@@ -49,10 +67,44 @@ function elaLastPrice() {  // 获取亦来云当前现货价格
   var response = UrlFetchApp.fetch(url, options);
   var obj = JSON.parse(response.getContentText());
   var tick = obj['tick'];
-  var id = tick['id'];
   var close = tick['close'];
 
-  Logger.log("close: "+ close);
+  Logger.log(symbol+ " close price: "+ close);
 
   return parseFloat(close);
 }
+
+Date.prototype.format = function(format) {
+  // https://segmentfault.com/q/1010000011772052
+  //eg:format="yyyy-MM-dd hh:mm:ss";
+
+  if (!format) {
+    format = "yyyy-MM-dd hh:mm:ss";
+  }
+
+  var o = {
+    "M+": this.getMonth() + 1, // month
+    "d+": this.getDate(), // day
+    "H+": this.getHours(), // hour
+    "h+": this.getHours(), // hour
+    "m+": this.getMinutes(), // minute
+    "s+": this.getSeconds(), // second
+    "q+": Math.floor((this.getMonth() + 3) / 3), // quarter
+    "S": this.getMilliseconds()
+  };
+
+  if (/(y+)/.test(format)) {
+    format = format.replace(RegExp.$1, (this.getFullYear() + "")
+      .substr(4 - RegExp.$1.length));
+  }
+
+  for (var k in o) {
+    if (new RegExp("(" + k + ")").test(format)) {
+      format = format.replace(RegExp.$1, RegExp.$1.length == 1 ?
+        o[k] :
+        ("00" + o[k]).substr(("" + o[k]).length));
+    }
+  }
+
+  return format;
+};
