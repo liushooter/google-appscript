@@ -1,4 +1,4 @@
- function addElaPrice(e) { // 亦来云
+function addElaPrice(e) { // 亦来云
   // https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getsheetbynamename
 
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("tab1");
@@ -30,6 +30,15 @@ function addNasPrice(e) { // 星云
   }
 }
 
+function addEosPrice(e) { // Eos
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("EOS");
+
+  if (sheet != null) {
+    sheet.getCurrentCell().setValue(getCurrTime());
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("eosusdt"));
+  }
+}
+
 function getCurrTime() { // 当前时间
   var _now = new Date();
   var now = _now.format();
@@ -38,7 +47,7 @@ function getCurrTime() { // 当前时间
   return now;
 }
 
-function getLastPrice(symbol) {  // 获取当前现货价格
+function getLastPrice(symbol) { // 获取当前现货价格
   /*
   {
       "status":"ok",
@@ -60,7 +69,7 @@ function getLastPrice(symbol) {  // 获取当前现货价格
   var url = "https://api.huobi.pro/market/detail?symbol=" + symbol;
 
   var options = {
-    'method' : 'get',
+    'method': 'get',
     'contentType': 'application/json',
   };
 
@@ -69,7 +78,7 @@ function getLastPrice(symbol) {  // 获取当前现货价格
   var tick = obj['tick'];
   var close = tick['close'];
 
-  Logger.log(symbol+ " close price: "+ close);
+  Logger.log(symbol + " close price: " + close);
 
   return parseFloat(close);
 }
