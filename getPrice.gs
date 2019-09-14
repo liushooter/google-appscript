@@ -1,7 +1,7 @@
 function addElaPrice(e) { // 亦来云
   // https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getsheetbynamename
 
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("tab1");
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("ELA");
 
   if (sheet != null) {
     // sheet.getRange('B1').setValue(elaLastPrice());
@@ -12,30 +12,23 @@ function addElaPrice(e) { // 亦来云
 }
 
 function addHtPrice(e) { // HT
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("HT");
-
-  if (sheet != null) {
-    sheet.getCurrentCell().setValue(getCurrTime());
-    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("htusdt"));
-  }
+  insertCellPrice("HT", "htusdt")
 }
 
 function addNasPrice(e) { // 星云
-
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("NAS");
-
-  if (sheet != null) {
-    sheet.getCurrentCell().setValue(getCurrTime());
-    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("nasusdt"));
-  }
+  insertCellPrice("NAS", "nasusdt")
 }
 
 function addEosPrice(e) { // Eos
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("EOS");
+  insertCellPrice("EOS", "eosusdt")
+}
+
+function insertCellPrice(sheet_name, symbol) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheet_name);
 
   if (sheet != null) {
     sheet.getCurrentCell().setValue(getCurrTime());
-    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("eosusdt"));
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice(symbol));
   }
 }
 
