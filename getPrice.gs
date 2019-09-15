@@ -23,6 +23,10 @@ function addEosPrice(e) { // Eos
   insertCellPrice("EOS", "eosusdt")
 }
 
+function addBtcPrice(e) { // Btc
+  insertCellPrice("BTC", "btcusdt")
+}
+
 function insertCellPrice(sheet_name, symbol) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheet_name);
 
