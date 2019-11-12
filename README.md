@@ -28,3 +28,8 @@ https://mixedanalytics.com/api-connector/  浏览器插件，通过外部api把�
 [将coinmarketcap导入到 Google Sheet](https://mixedanalytics.com/knowledge-base/import-coinmarketcap-data-to-google-sheets/)
 
 [将 Google Sheet数据导入到stitchdata](https://www.stitchdata.com/blog/how-to-replicate-google-sheets-to-your-data-warehouse/)
+
+## 其他
+https://table2site.com/ Build websites with Airtable，类似 https://www.sheet2site.com/
+
+https://hootsuite.com/ 一键发布内容到多个国外社交媒体，免费的可以发三个平台 twitter facebook linkedin
