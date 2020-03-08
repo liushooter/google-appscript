@@ -1,13 +1,13 @@
-function addElaPrice(e) { // 亦来云
+function addBtcPrice(e) { // Btc
   // https://developers.google.com/apps-script/reference/spreadsheet/spreadsheet#getsheetbynamename
 
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("ELA");
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("BTC");
 
   if (sheet != null) {
     // sheet.getRange('B1').setValue(elaLastPrice());
 
     sheet.getCurrentCell().setValue(getCurrTime());
-    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("elausdt")); // 向右一个单元格
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPrice("btcusdt")); // 向右一个单元格
   }
 }
 
@@ -23,8 +23,12 @@ function addEosPrice(e) { // Eos
   insertCellPrice("EOS", "eosusdt")
 }
 
-function addBtcPrice(e) { // Btc
-  insertCellPrice("BTC", "btcusdt")
+function addElaPrice(e) { // Ela 亦来云
+  insertCellPrice("BTC", "elausdt")
+}
+
+function addCkbPrice(e) { // Ckb
+  insertCellPrice("ckb", "ckbusdt")
 }
 
 function insertCellPrice(sheet_name, symbol) {
@@ -48,18 +52,18 @@ function getLastPrice(symbol) { // 获取当前现货价格
   /*
   {
       "status":"ok",
-      "ch":"market.elausdt.detail",
+      "ch":"market.btcusdt.detail",
       "ts":1567396831582,
       "tick":{
-          "amount":10365.174440816327,
-          "open":2.4386,
-          "close":2.3982,
-          "high":2.4662,
-          "id":200086625221,
-          "count":5222,
-          "low":2.3412,
-          "version":200086625221,
-          "vol":24872.076249
+          "amount":24130.29991795428,
+          "open":9093.53,
+          "close":8745.28,
+          "high":9187.7,
+          "id":210053472405,
+          "count":238168,
+          "low":8702.01,
+          "version":210053472405,
+          "vol":216036731.61609185
       }
   }
   */
