@@ -21,6 +21,8 @@ https://www.sheet2site.com/ 通过设定sheet数据生成一个定制化的网�
 
 https://mixedanalytics.com/api-connector/  浏览器插件，通过外部api把数据导入到 sheet
 
+https://steinhq.com/ 与 https://sheet.best/ 很相似
+
 ## 例子
 
 [导入网页数据到 Google Sheet](https://www.cnblogs.com/Wayou/p/7039698.html)
@@ -28,6 +30,14 @@ https://mixedanalytics.com/api-connector/  浏览器插件，通过外部api把�
 [将coinmarketcap导入到 Google Sheet](https://mixedanalytics.com/knowledge-base/import-coinmarketcap-data-to-google-sheets/)
 
 [将 Google Sheet数据导入到stitchdata](https://www.stitchdata.com/blog/how-to-replicate-google-sheets-to-your-data-warehouse/)
+
+## 数据
+
+https://sheet.best/api/sheets/c904c7be-955d-429e-9c29-376f4e31ecca/tabs/Summary/0
+
+https://sheet.best/api/sheets/c904c7be-955d-429e-9c29-376f4e31ecca/tabs/Summary?_limit=5&_offset=2
+
+https://api.steinhq.com/v1/storages/5e73b903b88d3d04ae0815bb/Summary?limit=5&offset=2
 
 ## 其他
 

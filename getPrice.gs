@@ -31,6 +31,16 @@ function addCkbPrice(e) { // Ckb
   insertCellPrice("ckb", "ckbusdt")
 }
 
+function addBandPrice(e) { // BAND
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("BAND");
+
+  if (sheet != null) {
+    sheet.getCurrentCell().setValue(getCurrTime());
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPriceByBinance("BANDUSDT"));
+  }
+}
+
 function insertCellPrice(sheet_name, symbol) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheet_name);
 
@@ -82,6 +92,31 @@ function getLastPrice(symbol) { // 获取当前现货价格
   Logger.log(symbol + " close price: " + close);
 
   return parseFloat(close);
+}
+
+function getLastPriceByBinance(symbol) { // 获取当前现货价格
+  /*
+    https://api.binance.com/api/v3/ticker/price?symbol=BANDUSDT
+
+    {
+      "symbol":"BANDUSDT",
+      "price":"0.34000000"
+    }
+  */
+  var url = "https://api.binance.com/api/v3/ticker/price?symbol=" + symbol;
+
+  var options = {
+    'method': 'get',
+    'contentType': 'application/json',
+  };
+
+  var response = UrlFetchApp.fetch(url, options);
+  var obj = JSON.parse(response.getContentText());
+  var price = obj['price'];
+
+  Logger.log(symbol + " price: " + price);
+
+  return parseFloat(price);
 }
 
 Date.prototype.format = function(format) {
