@@ -82,9 +82,12 @@ function getLastPrice(symbol) { // 获取当前现货价格
   var options = {
     'method': 'get',
     'contentType': 'application/json',
+    muteHttpExceptions: true, // https://www.coder.work/article/1860288
   };
 
   var response = UrlFetchApp.fetch(url, options);
+  Logger.log(response.getContentText());
+
   var obj = JSON.parse(response.getContentText());
   var tick = obj['tick'];
   var close = tick['close'];
@@ -108,10 +111,13 @@ function getLastPriceByBinance(symbol) { // 获取当前现货价格
   var options = {
     'method': 'get',
     'contentType': 'application/json',
+    muteHttpExceptions: true,
   };
 
-  var response = UrlFetchApp.fetch(url, options);
-  var obj = JSON.parse(response.getContentText());
+  var resp = UrlFetchApp.fetch(url, options);
+  Logger.log(resp.getContentText());
+
+  var obj = JSON.parse(resp.getContentText());
   var price = obj['price'];
 
   Logger.log(symbol + " price: " + price);
@@ -121,7 +127,7 @@ function getLastPriceByBinance(symbol) { // 获取当前现货价格
 
 Date.prototype.format = function(format) {
   // https://segmentfault.com/q/1010000011772052
-  //eg:format="yyyy-MM-dd hh:mm:ss";
+  // format="yyyy-MM-dd hh:mm:ss";
 
   if (!format) {
     format = "yyyy-MM-dd hh:mm:ss";
