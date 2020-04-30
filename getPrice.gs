@@ -103,14 +103,15 @@ function getLastPriceByBinance(symbol) { // 获取当前现货价格
 
     {
       "symbol":"BANDUSDT",
-      "price":"0.34000000"
+      "price": "0.85670"
     }
   */
   var url = "https://api.binance.com/api/v3/ticker/price?symbol=" + symbol;
 
   var options = {
-    'method': 'get',
-    'contentType': 'application/json',
+    method: 'get',
+    accept: 'application/json',
+    'content-type': 'application/json',
     muteHttpExceptions: true,
   };
 
