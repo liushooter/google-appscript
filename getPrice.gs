@@ -11,6 +11,10 @@ function addBtcPrice(e) { // Btc
   }
 }
 
+function addEthPrice(e) { // ETH
+  insertCellPrice("ETH", "ethusdt")
+}
+
 function addHtPrice(e) { // HT
   insertCellPrice("HT", "htusdt")
 }
@@ -109,9 +113,8 @@ function getLastPriceByBinance(symbol) { // 获取当前现货价格
   var url = "https://api.binance.com/api/v3/ticker/price?symbol=" + symbol;
 
   var options = {
-    method: 'get',
-    accept: 'application/json',
-    'content-type': 'application/json',
+    'method' : 'get',
+    'contentType': 'application/json',
     muteHttpExceptions: true,
   };
 
