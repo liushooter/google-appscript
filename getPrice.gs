@@ -45,6 +45,16 @@ function addBandPrice(e) { // BAND
   }
 }
 
+function addDotPrice(e) { // DOT
+
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("DOT");
+
+  if (sheet != null) {
+    sheet.getCurrentCell().setValue(getCurrTime());
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPriceByBinance("DOTUSDT"));
+  }
+}
+
 function insertCellPrice(sheet_name, symbol) {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(sheet_name);
 
