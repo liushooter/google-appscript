@@ -45,6 +45,24 @@ function addBandPrice(e) { // BAND
   }
 }
 
+function addXRPPrice(e) { // XRP
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("XRP");
+
+  if (sheet != null) {
+    sheet.getCurrentCell().setValue(getCurrTime());
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPriceByBinance("XRPUSDT"));
+  }
+}
+
+function addAtomPrice(e) { // ATOM
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("ATOM");
+
+  if (sheet != null) {
+    sheet.getCurrentCell().setValue(getCurrTime());
+    sheet.getCurrentCell().offset(0, 1).setValue(getLastPriceByBinance("ATOMUSDT"));
+  }
+}
+
 function addDotPrice(e) { // DOT
 
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("DOT");
