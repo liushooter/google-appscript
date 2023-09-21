@@ -6,7 +6,7 @@ https://www.bilibili.com/video/av66399654
 
 ## Web3 Daily 小应用
 
-本人用 google sheet 作为 https://daily.rebase.network/ 的数据源，还用了 https://sheet.best/ ，它提供更好的 RESTful api 的方式访问 google sheet 数据
+~~本人用 google sheet 作为 https://daily.rebase.network/ 的数据源，还用了 https://sheet.best/ ，它提供更好的 RESTful api 的方式访问 google sheet 数据~~
 
 ## Api 文档
 
